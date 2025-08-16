@@ -1,6 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Moon+Dance&family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cursive-style {
+  font-family: cursive;
+}
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", regular;
+  font-weight: 400;
+  font-style: normal;
+}
 
 @layer base {
     :root {
@@ -64,6 +75,10 @@
       --input: 0 0% 14.9%;
       --ring: 0 0% 83.1%;
     }
+  .theme {
+    --animate-shiny-text: shiny-text 8s infinite;
+    --animate-grid: grid 15s linear infinite;
+  }
   }
 
   @layer base {
@@ -78,11 +93,11 @@
   h3 code {
     @apply !text-lg md:!text-xl;
   }
-  
+
   pre {
     @apply !px-0 rounded-lg overflow-x-auto py-4
   }
-   
+
   pre [data-line] {
     @apply px-4
   }
@@ -90,17 +105,17 @@
   code {
     @apply text-sm md:text-base !leading-loose;
   }
-  
+
   pre > code {
     counter-reset: line;
   }
-  
+
   code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-light);
     background-color: var(--shiki-light-bg);
   }
-   
+
   @media (prefers-color-scheme: dark) {
     code[data-theme*=" "],
     code[data-theme*=" "] span {
@@ -108,25 +123,25 @@
       background-color: var(--shiki-dark-bg);
     }
   }
-  
+
   code[data-line-numbers] {
     counter-reset: line;
   }
-  
+
   code[data-line-numbers] > [data-line]::before {
     counter-increment: line;
     content: counter(line);
     @apply inline-block w-4 mr-4 text-right text-gray-500;
   }
- 
+
   code {
     counter-reset: line;
   }
- 
+
   code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
- 
+
   /* Other styling */
   display: inline-block;
   width: 1rem;
@@ -134,11 +149,84 @@
   text-align: right;
   color: gray;
 }
- 
+ .parisienne-regular {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.moon-dance-regular {
+  font-family: "Moon Dance", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 2rem;
 }
- 
+
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
+}
+
+/* Project Grid Layout */
+.project-grid-parent {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1.5fr 1fr 0.5fr;
+  grid-template-rows: 1fr 0.60fr 0.25fr 0.5fr 0.25fr;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  height: 600px;
+}
+
+.project-grid-div1 { grid-area: 1 / 1 / 2 / 2; }
+.project-grid-div2 { grid-area: 1 / 1 / 3 / 3; }
+.project-grid-div3 { grid-area: 1 / 4 / 4 / 6; }
+.project-grid-div4 { grid-area: 1 / 3 / 5 / 4; }
+.project-grid-div5 { grid-area: 3 / 1 / 6 / 3; }
+.project-grid-div6 { grid-area: 4 / 4 / 6 / 6; }
+
+/* Marquee Animations */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration) linear infinite;
+}
+
+@theme inline {
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+  @keyframes grid {
+  0% {
+    transform: translateY(-50%);
+    }
+  100% {
+    transform: translateY(0);
+    }
+  }
 }
