@@ -125,7 +125,7 @@ export default function MotionHero() {
           {/* Main headline with enhanced styling */}
           <div className="mb-1">
             <h1 className="text-5xl md:text-5xl lg:text-5xl font-light text-white leading-tight drop-shadow-2xl">
-              Let's make it
+              Let&apos;s make it
             </h1>
             <h2 className="text-7xl md:text-7xl lg:text-7xl  shadows-into-light-regular italic underline text-green-400 leading-tight drop-shadow-2xl bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent">
               APXiN.
@@ -173,7 +173,7 @@ export default function MotionHero() {
              
             </button>
             <InteractiveHoverButton className="group relative px-9 py-4 rounded-full backdrop-blur-md bg-gradient-to-r from-green-500/80 to-emerald-500/80 border border-green-400/30 text-white font-medium transition-all duration-300 hover:scale-105 overflow-hidden shadow-lg">
-Let's Connect
+Let&apos;s Connect
             </InteractiveHoverButton>
           </div>
 
