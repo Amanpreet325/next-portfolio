@@ -128,7 +128,7 @@ export default function MotionHero() {
               Let&apos;s make it
             </h1>
             <h2 className="text-7xl md:text-7xl lg:text-7xl  shadows-into-light-regular italic underline text-green-400 leading-tight drop-shadow-2xl bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent">
-              APXiN.
+              APXiN
             </h2>
           </div>
 
