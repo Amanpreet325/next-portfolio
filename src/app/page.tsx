@@ -89,7 +89,7 @@ export default function Page() {
                   My Professional Journey
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Here's where I've applied my skills to create real-world impact and grow as a developer.
+                  Here&apos;s where I&apos;ve applied my skills to create real-world impact and grow as a developer.
                 </p>
               </div>
             </div>
