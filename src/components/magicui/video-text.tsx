@@ -97,12 +97,19 @@ export function VideoText({
 
   const dataUrlMask = `url("data:image/svg+xml,${encodeURIComponent(svgMask)}")`;
 
-  return (
-    <Component className={cn(`relative size-full`, className)}>
-      {/* Create a container that masks the video to only show within text */}
-      <div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{
+  const containerProps = {
+    className: cn(`relative size-full`, className),
+  };
+
+  return React.createElement(
+    Component as any,
+    containerProps,
+    // Create a container that masks the video to only show within text
+    React.createElement(
+      "div",
+      {
+        className: "absolute inset-0 flex items-center justify-center",
+        style: {
           maskImage: dataUrlMask,
           WebkitMaskImage: dataUrlMask,
           maskSize: "contain",
@@ -111,23 +118,23 @@ export function VideoText({
           WebkitMaskRepeat: "no-repeat",
           maskPosition: "center",
           WebkitMaskPosition: "center",
-        }}
-      >
-        <video
-          className="w-full h-full object-cover"
-          autoPlay={autoPlay}
-          muted={muted}
-          loop={loop}
-          preload={preload}
-          playsInline
-        >
-          <source src={src} />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      {/* Add a backup text element for SEO/accessibility */}
-      <span className="sr-only">{content}</span>
-    </Component>
+        },
+      },
+      React.createElement(
+        "video",
+        {
+          className: "w-full h-full object-cover",
+          autoPlay,
+          muted,
+          loop,
+          preload,
+          playsInline: true,
+        },
+        React.createElement("source", { src }),
+        "Your browser does not support the video tag."
+      )
+    ),
+    // Add a backup text element for SEO/accessibility
+    React.createElement("span", { className: "sr-only" }, content)
   );
 }
