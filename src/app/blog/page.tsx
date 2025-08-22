@@ -1,6 +1,5 @@
 import BlurFade from "@/components/magicui/blur-fade";
-import { getBlogPosts } from "@/data/blog";
-import Link from "next/link";
+import { Clock, Edit3, BookOpen } from "lucide-react";
 
 export const metadata = {
   title: "Blog",
@@ -9,38 +8,49 @@ export const metadata = {
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
-
+export default function BlogPage() {
   return (
-    <section>
-      <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">blog</h1>
-      </BlurFade>
-      {posts
-        .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1;
-          }
-          return 1;
-        })
-        .map((post, id) => (
-          <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
-            <Link
-              className="flex flex-col space-y-1 mb-4"
-              href={`/blog/${post.slug}`}
-            >
-              <div className="w-full flex flex-col">
-                <p className="tracking-tight">{post.metadata.title}</p>
-                <p className="h-6 text-xs text-muted-foreground">
-                  {post.metadata.publishedAt}
-                </p>
-              </div>
-            </Link>
-          </BlurFade>
-        ))}
+    <section className="min-h-[60vh] flex items-center justify-center">
+      <div className="text-center space-y-6 max-w-md mx-auto px-4">
+        <BlurFade delay={BLUR_FADE_DELAY}>
+          <div className="relative">
+            <Clock className="w-16 h-16 mx-auto text-blue-500 mb-4" />
+            <div className="absolute -top-2 -right-2">
+              <Edit3 className="w-6 h-6 text-purple-500 animate-pulse" />
+            </div>
+          </div>
+        </BlurFade>
+        
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Coming Soon
+          </h1>
+        </BlurFade>
+        
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            I'm currently working on some exciting blog posts about software development, 
+            tech insights, and my journey as a developer.
+          </p>
+        </BlurFade>
+        
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <BookOpen className="w-4 h-4" />
+            <span>Stay tuned for updates!</span>
+          </div>
+        </BlurFade>
+        
+        <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <div className="pt-4">
+            <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-200 dark:border-blue-800">
+              <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                📝 Content in progress...
+              </span>
+            </div>
+          </div>
+        </BlurFade>
+      </div>
     </section>
   );
 }

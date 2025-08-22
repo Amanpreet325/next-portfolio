@@ -11,6 +11,10 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import MotionHero from "@/components/motion-hero";
 import { SkillsMarqueeSection } from "@/components/skills-marquee";
+import ScratchCardModal from "@/components/scratch-card-modal";
+import ResumeDownloadButton from "@/components/resume-download-button";
+import { ShareButtonDemo } from "@/components/share-button-demo";
+import { CVDownloadButton } from "@/components/cv-download-button";
 const BLUR_FADE_DELAY = 0.04;
 
 
@@ -18,6 +22,11 @@ export default function Page() {
   return (
     
     <main className="flex flex-col min-h-[80dvh] ">
+      {/* CV Download Button - Fixed position */}
+      <CVDownloadButton />
+      
+      {/* Scratch Card Modal */}
+      <ScratchCardModal showDelay={5000} />
       
       <MotionHero />
       <SkillsMarqueeSection />
@@ -32,7 +41,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-      <div className="space-y-10  py-16 max-w-6xl mx-auto w-full">
+      <div className="space-y-6 py-8 max-w-6xl mx-auto w-full">
         {/* <section id="hero-content" className="space-y-8">
           <div className="mx-auto w-full max-w-2xl space-y-8">
             <div className="gap-2 flex justify-between">
@@ -59,9 +68,9 @@ export default function Page() {
           </div>
         </section> */}
       <section id="about">
-        <div className="space-y-12 w-full py-12">
+        <div className="space-y-8 w-full py-6">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-3 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   About Me
@@ -77,10 +86,10 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-      <section id="work">
-        <div className="space-y-12 w-full py-12">
+      {/* <section id="work">
+        <div className="space-y-8 w-full py-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-3 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   Work Experience
@@ -117,11 +126,11 @@ export default function Page() {
             </div>
           </BlurFade>
         </div>
-      </section>
-      <section id="education">
-        <div className="space-y-12 w-full py-12">
+      </section> */}
+      {/* <section id="education">
+        <div className="space-y-8 w-full py-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-3 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   Education
@@ -156,11 +165,11 @@ export default function Page() {
             </div>
           </BlurFade>
         </div>
-      </section>
+      </section> */}
       <section id="skills">
-        <div className="space-y-12 w-full py-12">
+        <div className="space-y-8 w-full py-6">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-3 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   Technical Skills
@@ -192,7 +201,7 @@ export default function Page() {
       </div>
       
       <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-3">
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -212,6 +221,16 @@ export default function Page() {
                 and I&apos;ll respond whenever I can. I will ignore all
                 soliciting.
               </p>
+              
+              {/* Share Button */}
+              <div className="mt-8">
+                <ShareButtonDemo />
+              </div>
+              
+              {/* Resume Download Button */}
+              <div className="mt-6">
+                <ResumeDownloadButton variant="primary" />
+              </div>
             </div>
           </BlurFade>
         </div>

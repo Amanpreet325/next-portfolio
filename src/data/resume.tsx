@@ -6,13 +6,13 @@ import { AnimatedNumberRandomDemo } from "@/components/animated-number-demo";
 export const DATA = {
   name: "Amanpreet Singh",
   initials: "AS",
-  url: "https://amanpreet325.github.io/CG_My_Portfolio/",
+  url: "https://next-portfolix.vercel.app/",
   location: "Dehradun, Uttarakhand",
   locationLink: "https://www.google.com/maps/place/Dehradun,+Uttarakhand",
   description:
     "Full Stack Web Developer and Product Designer. I love building innovative web applications and creating seamless user experiences.",
   summary:
-    "I am a passionate Full Stack Web Developer with expertise in modern web technologies including React, Node.js, Python, and Java. Currently pursuing B.TECH in Computer Science from Graphic Era University Dehradun. I have hands-on experience in building scalable web applications, working with databases, and creating responsive user interfaces. I enjoy solving complex problems and staying updated with the latest technology trends.",
+    "I am a passionate Full Stack Product Developer with expertise in modern web technologies including React, Node.js, Python, and Java. I have hands-on experience in building scalable web applications, working with databases, and creating responsive user interfaces. I enjoy solving complex problems and staying updated with the latest technology trends.",
   avatarUrl: "/me.png",
   skills: [
     "React",
@@ -56,13 +56,13 @@ export const DATA = {
       },
       X: {
         name: "X",
-        url: "https://twitter.com/amanpreet325",
+        url: "https://x.com/amanpreetXing",
         icon: Icons.x,
         navbar: true,
       },
       Portfolio: {
         name: "Portfolio",
-        url: "https://amanpreet325.github.io/CG_My_Portfolio/",
+        url: "https://next-portfolix.vercel.app",
         icon: Icons.globe,
         navbar: true,
       },

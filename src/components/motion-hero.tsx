@@ -7,6 +7,7 @@ import { HeroParallax } from "./ui/hero-parallax";
 import { ContainerScroll } from "./ui/container-scroll-animation";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import { ConnectButtonDemo } from "@/components/connect-button-demo";
 export const products = [
   {
     title: "Moonbeam",
@@ -89,18 +90,7 @@ export const products = [
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
   },
-  {
-    title: "Invoker Labs",
-    link: "https://invoker.lol",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-  },
-  {
-    title: "E Free Invoice",
-    link: "https://efreeinvoice.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
-  },
+  
 ];
 export default function MotionHero() {
   return (
@@ -120,7 +110,7 @@ export default function MotionHero() {
  
         
         {/* Main content container */}
-        <div className="relative h-full w-full flex flex-col items-center justify-center text-center px-2 py-2 z-[10]">
+        <div className="relative h-full w-full flex flex-col items-center justify-center text-center px-2 py-2 z-[20]">{/* Increased z-index */}
           
           {/* Main headline with enhanced styling */}
           <div className="mb-1">
@@ -164,17 +154,27 @@ export default function MotionHero() {
           
 
           {/* Call-to-action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <button className="group relative px-9  py-3 group rounded-full border border-black/5  text-base text-white   dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800">
-              <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+          <div className="flex flex-col sm:flex-row gap-4 mb-6 relative z-[30]">{/* Added z-index to button container */}
+            <button 
+              onClick={() => {
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                  projectsSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }}
+              className="group relative px-9 py-4 rounded-full backdrop-blur-xl bg-white/10 dark:bg-white/5 border border-white/20 dark:border-white/10 text-white shadow-2xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:shadow-3xl z-[31] cursor-pointer"
+              style={{ pointerEvents: 'auto' }}
+            >
+              <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-white/80 hover:duration-300 relative z-[32]">
           <span>✨ View My Work</span>
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </AnimatedShinyText>
              
             </button>
-            <InteractiveHoverButton className="group relative px-9 py-4 rounded-full backdrop-blur-md bg-gradient-to-r from-green-500/80 to-emerald-500/80 border border-green-400/30 text-white font-medium transition-all duration-300 hover:scale-105 overflow-hidden shadow-lg">
-Let&apos;s Connect
-            </InteractiveHoverButton>
+            <ConnectButtonDemo />
           </div>
 
           {/* Bottom description with enhanced styling */}
