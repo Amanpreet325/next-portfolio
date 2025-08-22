@@ -29,7 +29,7 @@ export default function BlogPage() {
         
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            I'm currently working on some exciting blog posts about software development, 
+            I&apos;m currently working on some exciting blog posts about software development, 
             tech insights, and my journey as a developer.
           </p>
         </BlurFade>

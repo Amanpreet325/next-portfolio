@@ -47,7 +47,7 @@ export function ConnectButtonDemo(): JSX.Element {
         style={{ pointerEvents: 'auto' }}
       >
         <span className="flex items-center justify-center px-4 py-1">
-          Let's Connect
+          Let&apos;s Connect
         </span>
       </button>
 

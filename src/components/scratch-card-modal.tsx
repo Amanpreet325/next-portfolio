@@ -359,7 +359,7 @@ export default function ScratchCardModal({
                       Congratulations!
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      Hi {formData.name}, you've won:
+                      Hi {formData.name}, you&apos;ve won:
                     </p>
                     <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
                       {selectedPrize.name}
