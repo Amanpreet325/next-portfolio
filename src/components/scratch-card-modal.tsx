@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Gift, Star } from 'lucide-react';
 import { ScratchToReveal } from '@/components/magicui/scratch-to-reveal';
@@ -115,7 +115,7 @@ const Confetti = ({ show }: { show: boolean }) => {
 };
 
 export default function ScratchCardModal({ 
-  showDelay = 25000, 
+  showDelay = 20000, // default now 20 seconds
   onClose 
 }: ScratchCardModalProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -129,14 +129,55 @@ export default function ScratchCardModal({
   const [selectedPrize, setSelectedPrize] = useState<Prize | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // Show modal after delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, showDelay);
+  // Show modal after user has been viewing the page for `showDelay` ms.
+  // Uses the Page Visibility API so the timer pauses when the tab is hidden.
+  const visibleTimeRef = useRef(0);
+  const lastVisibleAtRef = useRef<number | null>(null);
 
-    return () => clearTimeout(timer);
-  }, [showDelay]);
+  useEffect(() => {
+    let rafId: number | null = null;
+
+    function tick(now: number) {
+      // If page is visible, accumulate visible time
+      if (!document.hidden) {
+        if (lastVisibleAtRef.current == null) lastVisibleAtRef.current = now;
+        const delta = now - (lastVisibleAtRef.current || now);
+        visibleTimeRef.current += delta;
+        lastVisibleAtRef.current = now;
+
+        if (visibleTimeRef.current >= showDelay) {
+          setIsVisible(true);
+          return; // stop ticking
+        }
+      } else {
+        // page hidden, suspend timer
+        lastVisibleAtRef.current = null;
+      }
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        // stop counting visible time
+        lastVisibleAtRef.current = null;
+      } else {
+        // resume and start RAF loop if not already visible
+        if (!isVisible) {
+          lastVisibleAtRef.current = performance.now();
+        }
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    // start RAF
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [showDelay, isVisible]);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
