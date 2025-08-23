@@ -55,6 +55,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JQP8MF22K9"></script>
+<script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-JQP8MF22K9');
+            `,
+          }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-8xl mx-auto py-0 sm:py-0 px-3",

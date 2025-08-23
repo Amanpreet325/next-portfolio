@@ -230,7 +230,7 @@ export function ProjectShowcaseGrid({
       {projects.length > 8 && (
         <div className="text-center mt-12">
           <Link
-            href="/projects"
+            href="https://github.com/Amanpreet325"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 py-3 transition-colors duration-200"
           >
             View All Projects
