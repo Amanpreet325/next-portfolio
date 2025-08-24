@@ -133,11 +133,13 @@ export default function ScratchCardModal({
   // Uses the Page Visibility API so the timer pauses when the tab is hidden.
   const visibleTimeRef = useRef(0);
   const lastVisibleAtRef = useRef<number | null>(null);
+  const hasShownRef = useRef(false);
 
   useEffect(() => {
     let rafId: number | null = null;
 
     function tick(now: number) {
+      if (hasShownRef.current) return; // already shown or closed, stop
       // If page is visible, accumulate visible time
       if (!document.hidden) {
         if (lastVisibleAtRef.current == null) lastVisibleAtRef.current = now;
@@ -146,7 +148,10 @@ export default function ScratchCardModal({
         lastVisibleAtRef.current = now;
 
         if (visibleTimeRef.current >= showDelay) {
-          setIsVisible(true);
+          if (!hasShownRef.current) {
+            setIsVisible(true);
+            hasShownRef.current = true;
+          }
           return; // stop ticking
         }
       } else {
@@ -163,7 +168,7 @@ export default function ScratchCardModal({
         lastVisibleAtRef.current = null;
       } else {
         // resume and start RAF loop if not already visible
-        if (!isVisible) {
+        if (!hasShownRef.current) {
           lastVisibleAtRef.current = performance.now();
         }
       }
@@ -173,7 +178,7 @@ export default function ScratchCardModal({
     // start RAF
     rafId = requestAnimationFrame(tick);
 
-    return () => {
+  return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (rafId) cancelAnimationFrame(rafId);
     };
@@ -221,8 +226,9 @@ export default function ScratchCardModal({
     }, 1000);
   };
   const handleClose = () => {
-    setIsVisible(false);
-    onClose?.();
+  setIsVisible(false);
+  hasShownRef.current = true;
+  onClose?.();
   };
 
   const handleDownload = () => {
