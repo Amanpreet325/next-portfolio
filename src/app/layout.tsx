@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   
   images: [
       {
-        url: `${DATA.url}/files/apxin-preview.png`, // must be reachable
+        url: `/files/apxin-preview.png`, // relative URL - Next.js will make it absolute
         width: 1200,
         height: 630,
         alt: `${DATA.name} - portfolio preview`,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     title: `${DATA.name}`,
     card: "summary_large_image",
-    images: [`${DATA.url}/files/apxin-preview.png`],
+    images: [`/files/apxin-preview.png`],
   },
   verification: {
     google: "",
