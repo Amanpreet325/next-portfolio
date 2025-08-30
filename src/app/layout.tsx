@@ -63,6 +63,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const ogImage = new URL('/files/apxin-preview.png', DATA.url).toString();
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -78,6 +79,18 @@ export default function RootLayout({
             `,
           }}
         />
+         <meta property="og:title" content={DATA.name} />
+        <meta property="og:description" content={DATA.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={DATA.url} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={DATA.name} />
+        <meta name="twitter:description" content={DATA.description} />
+        <meta name="twitter:image" content={ogImage} />
+   
       </head>
       <body
         className={cn(
