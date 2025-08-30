@@ -12,7 +12,7 @@ export function ConnectButtonDemo(): JSX.Element {
     {
       icon: Mail,
       onClick: () => {
-        window.open('mailto:amanpreetsingh201946@gmail.com?subject=Let\'s Connect!&body=Hi Amanpreet! I found your portfolio and would love to connect.', '_blank')
+        window.open('mailto:amanpreetsingh2019463@gmail.com?subject=Let\'s Connect!&body=Hi Amanpreet! I found your portfolio and would love to connect.', '_blank')
       },
       label: "Send Email",
     },
