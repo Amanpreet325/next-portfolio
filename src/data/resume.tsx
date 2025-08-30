@@ -39,7 +39,7 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "amanpreetsingh201946@gmail.com",
+    email: "amanpreetsingh2019463@gmail.com",
     tel: "+91 8630447658",
     social: {
       GitHub: {
@@ -74,7 +74,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto:amanpreetsingh201946@gmail.com",
+        url: "mailto:amanpreetsingh2019463@gmail.com",
         icon: Icons.email,
         navbar: false,
       },
